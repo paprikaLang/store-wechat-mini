@@ -1,0 +1,40 @@
+<!--pages/order/order.wxml-->
+ <image class="bg" src="/images/bg.png"></image> 
+<view wx:if="{{!userInfo}}">
+  <view class="unlogin-card">
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可方便购物</view>
+    </view>
+  </view>
+  <button class="unlogin-btn" open-type="getUserInfo" bindgetuserinfo="onTapLogin">微信登录</button>
+</view>
+<view class='order-container' wx:elif='{{orderList.length > 0}}'>
+ <view class='finished-title'>
+  <image class='line-icon' src='/images/line-black.png'></image>
+  <view class='finished-text'>已完成</view>
+ </view>
+<view class='order-list'>
+  <view class='order-item' wx:for='{{orderList}}'  wx:key='id'  wx:for-item='oitem' mode='widthFix'>
+    <view class='product-item' wx:for='{{oitem.list}}' wx:key='id' wx:for-item='pitem' mode='widthFix'>
+      <image class='item-image' src='{{pitem.image}}' ></image>
+      <view class='product-info'>
+        <view class='product-name'>{{pitem.name}}</view>
+          <view class='price-meta'>
+            <view class='product-money' >￥</view>
+            <view class='product-price'>{{pitem.price}}</view>
+          </view>
+      </view>
+      <view class='product-comment'>
+         <view class='comment-btn'>评价</view>
+         <view class='product-count'>x{{pitem.count}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<view class="order-empty" wx:else>
+  <image class="empty-image" src="/images/order.png"></image>
+  <view class="empty-text">暂时还没有订单</view>
+</view>

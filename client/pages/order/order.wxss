@@ -1,0 +1,94 @@
+/* pages/order/order.wxss */
+.finished-title{
+  display: flex;
+  align-items: center;
+  margin: 20rpx 30rpx;
+}
+.line-icon{
+  margin-right: 10rpx;
+  width: 21rpx;
+  height: 34rpx;
+}
+.finished-text{
+  font-size: 25rpx;
+  line-height: 35rpx;
+}
+.order-item{
+  margin: 30rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+  border-radius: 13rpx;
+}
+.product-item{
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(151, 151, 151, 0.2);
+}
+.product-item:last-child{
+  border-bottom: none;
+}
+.item-image{
+  width: 150rpx;
+  height: 150rpx;
+  padding: 20rpx;
+}
+.product-info{
+  flex: 1;
+  
+}
+.product-name {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.8;
+  margin: 20rpx;
+}
+.price-meta{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin: 15rpx;
+  font-weight: bolder;
+}
+.product-comment{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 20rpx;
+}
+.comment-btn {
+  background: #F5E069;
+  border-radius: 5rpx;
+  font-size: 25rpx;
+  line-height: 35rpx;
+  padding: 8rpx 15rpx;
+  font-weight: bolder;
+}
+.product-count{
+  text-align: right;
+  font-size: 25rpx;
+  line-height: 35rpx;
+  font-weight: bolder;
+}
+.order-empty{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  margin: 30rpx 15rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+  border-radius: 13rpx;
+  height: 380rpx;
+}
+.empty-image{
+   width: 80rpx;
+   height: 80rpx;
+   margin-bottom: 10rpx;
+}
+.empty-text{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.5;
+
+}
