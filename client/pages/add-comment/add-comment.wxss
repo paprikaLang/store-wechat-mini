@@ -52,3 +52,17 @@
 .comment-plh {
   color: rgba(29, 29, 38, 0.4);
 }
+.comment-btn{
+  margin: 50rpx auto;
+  width: 300rpx;
+  height: 62rpx;
+  background: #F5E069;
+  text-align: center;
+  padding-top: 12rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  border-radius: 13rpx;
+}
+.comment-btn.dis{
+  opacity: 0.5;
+}

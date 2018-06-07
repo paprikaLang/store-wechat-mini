@@ -44,6 +44,14 @@ Page({
       }
     })
   },
+  onTapCommentEnrty(){
+    let product = this.data.product
+    // if(this.data.haveComment) {
+      wx.navigateTo({
+        url: `/pages/comment/comment?id=${product.id}&price=${product.price}&name=${product.name}&image=${product.image}`,
+      })
+    // }
+  },
   addToTrolley(){
     qcloud.request({
       url: config.service.addTrolley,

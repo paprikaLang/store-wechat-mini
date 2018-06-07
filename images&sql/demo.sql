@@ -12,7 +12,8 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-SET @IMAGE_BASE_URL = "https://product-1254205749.cos.ap-beijing.myqcloud.com"; -- FOR EXAMPLE: https://*****.ap-shanghai.myqcloud.com/
+SET @IMAGE_BASE_URL = "https://product-1254205749.cos.ap-beijing.myqcloud.com/"; -- FOR EXAMPLE: https://*****.ap-shanghai.myqcloud.com/
+SET NAMES utf8mb4;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,13 +33,13 @@ SET @IMAGE_BASE_URL = "https://product-1254205749.cos.ap-beijing.myqcloud.com"; 
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
-  `username` varchar(255) DEFAULT NULL,
+  `username` varchar(1023) CHARACTER SET utf8mb4 NOT NULL,
   `avatar` varchar(255) NOT NULL,
-  `content` varchar(511) CHARACTER SET utf8 DEFAULT NULL,
+  `content` varchar(1023) CHARACTER SET utf8mb4   COLLATE utf8mb4_unicode_ci  NULL,
   `images` varchar(1023) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 

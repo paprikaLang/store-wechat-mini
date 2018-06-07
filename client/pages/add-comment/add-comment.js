@@ -1,4 +1,6 @@
 // pages/add-comment/add-comment.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
 Page({
 
   /**
@@ -28,6 +30,49 @@ Page({
        commentValue: event.detail.value.trim()
      })
      console.log(this.data.commentValue)
+  },
+  addComment(event){
+     let content = this.data.commentValue
+     if(!content) return
+     wx.showLoading({
+       title: '正在发表评论...',
+     })
+     qcloud.request({
+       url: config.service.addComment,
+       login: true,
+       method: 'PUT',
+       data:{
+         content: content,
+         product_id: this.data.product.id
+       },
+       success: res => {
+         setTimeout(() => {
+           wx.hideLoading()
+         })
+         let data = res.data
+         console.log(data)
+         if(!data.code){
+           wx.showToast({
+             title: '发表评价成功',
+           })
+           setTimeout(() => {
+             wx.navigateBack()
+           },1500)
+         }else{
+           wx.showToast({
+             title: '发表评价失败',
+           })
+         }
+       },
+       fail: res => {
+         console.log(res)
+         wx.hideLoading()
+         wx.showToast({
+           title: '发表评论失败',
+         })
+       }
+     })
+
   },
 
   /**

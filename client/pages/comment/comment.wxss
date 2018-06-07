@@ -1,0 +1,71 @@
+/* pages/comment/comment.wxss */
+.product-item{
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(151, 151, 151, 0.2);
+  background: #fff; 
+}
+.product-item:last-child{
+  border-bottom: none;
+}
+.item-image{
+  width: 150rpx;
+  height: 150rpx;
+  padding: 20rpx;
+}
+.product-info{
+  flex: 1;
+  
+}
+.product-name {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.8;
+  margin: 20rpx;
+}
+.price-meta{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin: 15rpx;
+  font-weight: bolder;
+}
+.comment-title{
+  padding: 20rpx;
+
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.03);
+}
+.comment-title, .item-content{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.9;
+}
+.item-name, .item-time{
+  font-size: 33rpx;
+  line-height: 46rpx;
+  opacity: 0.6;
+}
+.comment-list{
+  margin-top: 20rpx;
+  background: #fff;
+}
+.item-avatar{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 13rpx;
+  margin-right: 20rpx;
+}
+.comment-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.10);
+}
+
+.item-cnt{
+  flex: 1;
+  margin-top: -5rpx;
+
+}
