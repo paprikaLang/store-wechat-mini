@@ -27,7 +27,7 @@
           </view>
       </view>
       <view class='product-comment'>
-         <view class='comment-btn'>评价</view>
+         <navigator class='comment-btn' url='/pages/add-comment/add-comment?id={{pitem.product_id}}&price={{pitem.price}}&name={{pitem.name}}&image={{pitem.image}}'>评价</navigator> 
          <view class='product-count'>x{{pitem.count}}</view>
       </view>
     </view>
