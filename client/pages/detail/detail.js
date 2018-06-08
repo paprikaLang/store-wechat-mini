@@ -23,6 +23,7 @@ Page({
     qcloud.request({
       url: config.service.productDetail + id,
       success: res => {
+        console.log('~~~',res)
         setTimeout(()=> {
           wx.hideLoading()
         },500)

@@ -39,4 +39,5 @@ router.put('/trolley',validationMiddleware,controllers.trolley.add)
 router.get('/trolleylist',validationMiddleware,controllers.trolley.list)
 router.post('/updatetrolley',validationMiddleware,controllers.trolley.update)
 router.put('/comment',validationMiddleware,controllers.comment.add)
+router.get('/commentlist',controllers.comment.list)
 module.exports = router

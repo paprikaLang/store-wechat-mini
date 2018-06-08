@@ -42,9 +42,9 @@
   opacity: 0.9;
 }
 .item-name, .item-time{
-  font-size: 33rpx;
-  line-height: 46rpx;
-  opacity: 0.6;
+  font-size: 25rpx;
+  line-height: 35rpx;
+  opacity: 0.4;
 }
 .comment-list{
   margin-top: 20rpx;
