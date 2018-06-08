@@ -8,32 +8,32 @@ Page({
    */
   data: {
     product: {},
-    commentValue: ' '
+    commentValue: ' ',
+    commentImages: []
   },
-
   chooseImage() {
     wx.chooseImage({
       count: 3,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: res => {
-        let currentImages = res.tempFilePaths
+        let commentImages = res.tempFilePaths
 
         this.setData({
-          images: currentImages
+          commentImages
         })
       },
     })
-
   },
 
   previewImg(event) {
+    // event.Target 获取触发事件的组件
     let target = event.currentTarget
     let src = target.dataset.src
 
     wx.previewImage({
       current: src,
-      urls: this.data.images
+      urls: this.data.commentImages
     })
   },
   /**
@@ -56,48 +56,81 @@ Page({
      })
      console.log(this.data.commentValue)
   },
+  uploadImage(callback) {
+    let commentImages = this.data.commentImages
+    let images = []
+    if (commentImages.length) {
+      let length = commentImages.length
+      for (let i = 0; i < length; i++) {
+        wx.uploadFile({
+          url: config.service.uploadUrl,
+          filePath: commentImages[i],
+          name: 'file',
+          success: res => {
+            let data = JSON.parse(res.data)
+            length--
+
+            if (!data.code) {
+              images.push(data.data.imgUrl)
+            }
+
+            if (length <= 0) {
+              callback && callback(images)
+            }
+          },
+          fail: () => {
+            length--
+          }
+        })
+      }
+    } else {
+      callback && callback(images)
+    }
+  },
+
   addComment(event){
      let content = this.data.commentValue
      if(!content) return
      wx.showLoading({
        title: '正在发表评论...',
      })
-     qcloud.request({
-       url: config.service.addComment,
-       login: true,
-       method: 'PUT',
-       data:{
-         content: content,
-         product_id: this.data.product.id
-       },
-       success: res => {
-         setTimeout(() => {
-           wx.hideLoading()
-         })
-         let data = res.data
-         console.log(data)
-         if(!data.code){
-           wx.showToast({
-             title: '发表评价成功',
-           })
+
+     this.uploadImage(images => {
+       qcloud.request({
+         url: config.service.addComment,
+         login: true,
+         method: 'PUT',
+         data: {
+           images,
+           content: content,
+           product_id: this.data.product.id
+         },
+         success: res => {
            setTimeout(() => {
-             wx.navigateBack()
-           },1500)
-         }else{
+             wx.hideLoading()
+           },500)
+           let data = res.data
+           if (!data.code) {
+             wx.showToast({
+               title: '发表评价成功',
+             })
+             setTimeout(() => {
+               wx.navigateBack()
+             }, 1500)
+           } else {
+             wx.showToast({
+               title: '发表评价失败',
+             })
+           }
+         },
+         fail: res => {
+           console.log(res)
            wx.showToast({
-             title: '发表评价失败',
+             title: '发表评论失败',
            })
          }
-       },
-       fail: res => {
-         console.log(res)
-         wx.hideLoading()
-         wx.showToast({
-           title: '发表评论失败',
-         })
-       }
+       })
      })
-
   },
 
   /**

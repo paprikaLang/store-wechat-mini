@@ -15,8 +15,8 @@
 <view class="intro">
   <image class='opr-upload' src='/images/image.png' bindtap='chooseImage'></image>
 </view>
-<view class='preview-cnt' wx:if='{{images.length}}'>
-    <image class='preview-image' wx:for='{{images}}' wx:key='*this' src='{{item}}' mode='aspectFill' bindtap='previewImg' data-src='{{item}}'></image>
+<view class='preview-cnt' wx:if='{{commentImages.length}}'>
+    <image class='preview-image' wx:for='{{commentImages}}' wx:key='*this' src='{{item}}' mode='aspectFill' bindtap='previewImg' data-src='{{item}}'></image>
 </view>
 
 <view class="comment-btn {{!commentValue ? 'dis' : ''}}" bindtap='addComment'>提交评价</view>
