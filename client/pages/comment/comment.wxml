@@ -9,18 +9,20 @@
           </view>
     </view>
 </view>
+<view class='comment-title'>{{commentList.length}}条评价</view>
 <view class='comment-list'>
- <view class='comment-title'>{{commentList.length}}条评价</view>
  <view class='comment-card' wx:for='{{commentList}}' wx:key='id' wx:for-item='item'>
    <image class='item-avatar' src='{{item.avatar}}'></image>
-   <view class='item-cnt'>
-     <view class='item-name'>{{item.username}}</view>
-     <view class='item-content'>{{item.content}}</view>
-   </view>
    <view class='item-right'>
-    <view class='item-time'> {{item.createTime}}</view>
-    <view class='preview-list' wx:if='{{item.images.length}}'>
+    <view class='item-cnt'>
+      <view class='item-name'>{{item.username}}</view>
+      <view class='item-time'> {{item.createTime}}</view>
+    </view>
+    <view class='item-comment'>
+     <view class='item-content'>{{item.content}}</view>
+     <view class='preview-list' wx:if='{{item.images.length}}'>
         <image class='preview-item' wx:for='{{item.images}}' wx:for-item='pitem' wx:key='*this' src='{{pitem}}' bindtap='previewImg' data-src='{{pitem}}' data-urls='{{item.images}}'></image>
+     </view>
     </view>
    </view>
  </view>
