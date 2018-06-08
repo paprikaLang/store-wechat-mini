@@ -11,6 +11,31 @@ Page({
     commentValue: ' '
   },
 
+  chooseImage() {
+    wx.chooseImage({
+      count: 3,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: res => {
+        let currentImages = res.tempFilePaths
+
+        this.setData({
+          images: currentImages
+        })
+      },
+    })
+
+  },
+
+  previewImg(event) {
+    let target = event.currentTarget
+    let src = target.dataset.src
+
+    wx.previewImage({
+      current: src,
+      urls: this.data.images
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
