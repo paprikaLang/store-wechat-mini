@@ -17,6 +17,11 @@
      <view class='item-name'>{{item.username}}</view>
      <view class='item-content'>{{item.content}}</view>
    </view>
-   <view class='item-time'> {{item.createTime}}</view>
+   <view class='item-right'>
+    <view class='item-time'> {{item.createTime}}</view>
+    <view class='preview-list' wx:if='{{item.images.length}}'>
+        <image class='preview-item' wx:for='{{item.images}}' wx:for-item='pitem' wx:key='*this' src='{{pitem}}' bindtap='previewImg' data-src='{{pitem}}' data-urls='{{item.images}}'></image>
+    </view>
+   </view>
  </view>
 </view>

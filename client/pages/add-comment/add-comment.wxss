@@ -75,16 +75,13 @@
 
 .opr-upload {
   display: block;
-  margin-top: 29rpx;
-  margin-left: 29rpx; 
   width: 43rpx;
   height: 43rpx;
 }
-
 .preview-cnt {
   display: flex;
   margin-top: 29rpx;
-  margin-left: 29rpx;
+  /* margin-left: 29rpx; */
   justify-content: center;
 }
 

@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    product:{}
+    product:{},
+    haveComment: ''
   },
 
   /**
@@ -29,7 +30,8 @@ Page({
         },500)
         if(!res.data.code){
           this.setData({
-            product: res.data.data
+            product: res.data.data,
+            haveComment: res.data.data.commentCount
           })
         }else{
           setTimeout(() => {
@@ -47,11 +49,11 @@ Page({
   },
   onTapCommentEnrty(){
     let product = this.data.product
-    // if(this.data.haveComment) {
+    if(this.data.haveComment) {
       wx.navigateTo({
         url: `/pages/comment/comment?id=${product.id}&price=${product.price}&name=${product.name}&image=${product.image}`,
       })
-    // }
+    }
   },
   addToTrolley(){
     qcloud.request({

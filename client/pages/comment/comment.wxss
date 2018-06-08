@@ -42,8 +42,8 @@
   opacity: 0.9;
 }
 .item-name, .item-time{
-  font-size: 25rpx;
-  line-height: 35rpx;
+  font-size: 20rpx;
+  line-height: 28rpx;
   opacity: 0.4;
 }
 .comment-list{
@@ -67,5 +67,15 @@
 .item-cnt{
   flex: 1;
   margin-top: -5rpx;
+}
+.item-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 
+}
+.preview-item{
+  width: 80rpx;
+  height: 80rpx;
 }

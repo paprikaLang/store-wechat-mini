@@ -8,21 +8,16 @@ Page({
    */
   data: {
     product:{},
-    commentList:[
-      {
-   avatar:
-'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqkiauGbAvVSsqq9HfxdC3GYYwJiboFzrvKhiafObn4rC4T4BBnTccicak2RibSnS8RYGkmWExQmSbWQ6A/132',
-        username:'老狼',
-        content:'good',
-        createTime:'2018-6-8'
-      },
-      {
-        avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqkiauGbAvVSsqq9HfxdC3GYYwJiboFzrvKhiafObn4rC4T4BBnTccicak2RibSnS8RYGkmWExQmSbWQ6A/132',
-        username: '老狼',
-        content: 'nice',
-        createTime: '2018-6-8'
-      }
-    ]
+    commentList:[]
+  },
+  previewImg(event) {
+    let target = event.currentTarget
+    let src = target.dataset.src
+    let urls = target.dataset.urls
+    wx.previewImage({
+      urls: urls,
+      current: src,
+    })
   },
 
   getCommentList(id) {
@@ -38,6 +33,7 @@ Page({
             commentList: data.data.map(item => {
               let itemDate = new Date(item.create_time)
               item.createTime = _.formatTime(itemDate)
+              item.images = item.images ? item.images.split(';;') : []
               return item
             })
           })
